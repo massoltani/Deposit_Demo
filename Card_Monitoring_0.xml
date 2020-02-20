@@ -1,0 +1,43 @@
+﻿<Report xmlns="urn:TosanIDM-TReport">
+	<TReport StoredName="Card_Monitoring_0" Name="آخرین تاریخ به روز رسانی کارت" Id="d02e2486-4753-4ec0-92f4-12abe930c204">
+		<Description />
+		<MetaData>
+			<MetaDataItem Key="FraudReportType" Value="General" />
+			<MetaDataItem Key="FraudSubSystem" Value="Card" />
+			<MetaDataItem Key="FraudEntityName" Value="Card" />
+			<MetaDataItem Key="FraudModuleName" Value="Monitoring" />
+			<MetaDataItem Key="version" Value="2.0" />
+		</MetaData>
+		<Loaders>
+			<TReportLoader Address="" Platform="Html">
+				<LoaderParameters />
+			</TReportLoader>
+		</Loaders>
+		<DataSources>
+			<DataSource Name="SELECT" FriendlyName="SELECT" Auxiliary="False">
+				<Connection Name="DWSA-f2" />
+				<Command>
+				
+			select /*+Parallel(6)*/  max(t.EFFECTIVE_DATE) as EFFECTIVE_DATE from factcardtransaction t 
+
+				</Command>
+				<Parameters>
+				</Parameters>
+				<Fields>
+				  <Field Name="EFFECTIVE_DATE" Value="" Alias="EFFECTIVE_DATE" HeaderText="آخرین تاریخ به روز رسانی کارت" Type="TosanIDM.ReportProvider.Field" OrderIndex="0" Visible="True" Enabled="True" Width="300">
+					<ExtraParameterContainer>
+					  <ExtraParameter Key="Type" Value="Text" />
+					  <ExtraParameter Key="Format" Value="" />
+					</ExtraParameterContainer>
+				  </Field>
+				</Fields>
+				<ExtraParameterContainer>
+					<ExtraParameter Key="TotalRowCount" Value="1" />
+					<ExtraParameter Key="TotalCellCount" Value="2" />
+					<ExtraParameter Key="EnableBatchReview" Value="False" />
+					<ExtraParameter Key="EnablePaging" Value="True" />
+				</ExtraParameterContainer>
+			</DataSource>
+		</DataSources>
+	</TReport>
+</Report>
